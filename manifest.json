@@ -1,0 +1,16 @@
+{
+  "short_name": "OrchidGazer",
+  "name": "OrchidGazer",
+  "icons": [
+    {
+      "src": "img/ico.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.php",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0d47a1",
+  "background_color": "#ffffff"
+}
