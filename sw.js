@@ -6,7 +6,7 @@ toolbox.precache([
 ])
 
 toolbox.options.debug = false;
-toolbox.options.cache.name = "static-v1";
+toolbox.options.cache.name = "orchidgaz-v1";
 
 self.addEventListener('install', function install() {
   self.skipWaiting();
