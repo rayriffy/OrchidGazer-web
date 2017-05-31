@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -59,6 +60,18 @@
     }
   </style>
 </head>
+
+<div id="preloader">
+	<div id="status">&nbsp;</div>
+</div>
+<script type="text/javascript">
+  $(window).on('load', function() { // SHOW PRELOAD UNTIL PAGE IS COMPLETELY LOADED
+    $('#status').fadeOut();
+    $('#preloader').delay(500).fadeOut('slow');
+    $('body').delay(350).css({'overflow':'visible'});
+  })
+</script>
+
 <body>
   <ul id="more_pg_pc" class="dropdown-content">
     <li><a class="blue-text" href="#!">one</a></li>
@@ -74,7 +87,7 @@
         <div class="row">
           <div class="card">
             <div class="card-image">
-              <img src="img/card_img.jpg">
+              <img src="img/card_img.jpg" alt="splash">
               <span class="card-title">OrchidGazer</span>
             </div>
             <div class="card-content">
@@ -111,14 +124,14 @@
                 <div class="col l4 s6">
                   <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/1-1.jpg">
+                      <img class="activator" src="img/data/1-1.jpg" alt="Doritaenopsis Chain Xen Diamond Celebration">
                     </div>
                     <div class="card-content">
                       <p><i>Doritaenopsis Chain Xen Diamond Celebration</i></p>
                     </div>
                     <div class="card-reveal">
                       <span class="card-title grey-text text-darken-4">Detail<i class="material-icons right">close</i></span>
-                      <p>These seedlings are some of the newest "Harlequin" type seedlings. Dtps. Chain Xen Diamond 'Celebration' received an FCC from the American Orchid Society and had well shaped flowers with a pink background overlaid with blotches of dark red.</p>
+                      <p class="truncate">These seedlings are some of the newest "Harlequin" type seedlings. Dtps. Chain Xen Diamond 'Celebration' received an FCC from the American Orchid Society and had well shaped flowers with a pink background overlaid with blotches of dark red.</p>
                       <br /><a href="#modal1-1" class="blue-text">MORE</a>
                     </div>
                   </div>
@@ -126,7 +139,7 @@
                 <div class="col l4 s6">
                   <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/1-2.jpg">
+                      <img class="activator" src="img/data/1-2.jpg" alt="Cattleya labiata">
                     </div>
                     <div class="card-content">
                       <p><i>Cattleya labiata</i></p>
@@ -141,7 +154,7 @@
                 <div class="col l4 s6">
                   <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/1-3.jpg">
+                      <img class="activator" src="img/data/1-3.jpg" alt="Cattleya Arctic Star 'Snow Queen'">
                     </div>
                     <div class="card-content">
                       <p><i>Cattleya Arctic Star 'Snow Queen'</i></p>
@@ -156,7 +169,7 @@
                 <div class="col l4 s6">
                   <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/2-1.jpg">
+                      <img class="activator" src="img/data/2-1.jpg" alt="Phalanenopsis lindenii">
                     </div>
                     <div class="card-content">
                       <p><i>Phalanenopsis lindenii</i></p>
@@ -171,7 +184,7 @@
                 <div class="col l4 s6">
                   <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/2-2.jpg">
+                      <img class="activator" src="img/data/2-2.jpg" alt="Oncidium Sweet Sugar">
                     </div>
                     <div class="card-content">
                       <p><i>Oncidium Sweet Sugar</i></p>
@@ -186,7 +199,7 @@
                 <div class="col l4 s6">
                   <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/2-3.jpg">
+                      <img class="activator" src="img/data/2-3.jpg" alt="Epidendrum Stamfordianum">
                     </div>
                     <div class="card-content">
                       <p><i>Epidendrum Stamfordianum</i></p>
@@ -227,38 +240,46 @@
         <h4>Doritaenopsis Chain Xen Diamond Celebration</h4>
       </div>
       <div class="row">
-        <center><img src="img/modal/1-1.jpg" class="responsive-img" /></center>
-      </div>
-      <div class="row">
-        <b>BLOOMING SEASON:</b> Summer<br /><br />
-        <b>HOW TO TAKE CARE IT:</b>
-        <ul>
-          <li>Step 1</li>
-          <li>Step 2</li>
-          <li>Step 3</li>
-          <li>Step 4</li>
-        </ul>
-      </div>
-      <div class="row">
-        <div class="col s3 l2">
-          <b>RANKING:</b>
-        </div>
-        <div class="col s9 l10">
-          <div class="progress" style="height: 20px;">
-            <div class="determinate green" style="width: 80%;"></div>
+        <div class="container">
+          <div class="col l4 s12">
+              <center><img src="img/modal/1-1.jpg" class="responsive-img" /></center>
+              <blockquote>
+                These seedlings are some of the newest "Harlequin" type seedlings. Dtps. Chain Xen Diamond 'Celebration' received an FCC from the American Orchid Society and had well shaped flowers with a pink background overlaid with blotches of dark red.
+              </blockquote>
+          </div>
+          <div class="col l8 s12">
+          <div class="row">
+            <b>BLOOMING SEASON:</b> Summer<br /><br />
+            <b>HOW TO TAKE CARE IT:</b>
+            <ul>
+              <li>Step 1</li>
+              <li>Step 2</li>
+              <li>Step 3</li>
+              <li>Step 4</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col s3 l2">
+              <b>RANKING:</b>
+            </div>
+            <div class="col s9 l10">
+              <div class="progress" style="height: 20px;">
+                <div class="determinate green" style="width: 80%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s3 l2">
+              <b>RANKING:</b>
+            </div>
+            <div class="col s9 l10">
+              <div class="progress" style="height: 20px;">
+                <div class="determinate yellow" style="width: 45%;"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col s3 l2">
-          <b>RANKING:</b>
-        </div>
-        <div class="col s9 l10">
-          <div class="progress" style="height: 20px;">
-            <div class="determinate yellow" style="width: 45%;"></div>
-          </div>
-        </div>
-      </div>
+      </div></div>
     </div>
     <div class="modal-footer">
       <a href="#scanh" class="modal-action modal-close waves-effect waves-light btn-flat">Done</a>
@@ -310,20 +331,9 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="js/materialize.js"></script>
+  <script src="js/materialize.js" async></script>
   <? //<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script> ?>
-  <script type="text/javascript">
-    $(window).on('load', function() { // SHOW PRELOAD UNTIL PAGE IS COMPLETELY LOADED
-      $('#status').fadeOut();
-      $('#preloader').delay(500).fadeOut('slow');
-      $('body').delay(350).css({'overflow':'visible'});
-    })
-  </script>
 </body>
-<div id="preloader">
-	<div id="status">&nbsp;</div>
-</div>
 </html>
 
 <!-- JS SETUP -->
@@ -331,7 +341,10 @@
   $(document).ready(function(){
     var toast = Materialize.toast('Loading...', 3000);
     $('.collapsible').collapsible();
-    $('.modal').modal();
+    $('.modal').modal({
+      startingTop: '4%',
+      endingTop: '10%'
+    });
     $('.dropdown-button').dropdown({
       inDuration: 300,
       outDuration: 225,
