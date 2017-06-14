@@ -1,3 +1,23 @@
+<?
+  include ('sql.php');
+  sql_connect();
+  mysql_select_db('orchid') or die('ERR: DB not found');
+  $sql="SELECT * FROM `dat` WHERE 1";
+  $count=0;
+  while($row=mysql_fetch_array(mysql_query($sql)))
+  {
+    $count++;
+    $dat[$i][0]=$row[0];
+    $dat[$i][1]=$row[1];
+    $dat[$i][2]=$row[2];
+    $dat[$i][3]=$row[3];
+    $dat[$i][4]=$row[4];
+    $dat[$i][5]=$row[5];
+    $dat[$i][6]=$row[6];
+    $dat[$i][7]=$row[7];
+  }
+  mysql_close();
+?>
 <!DOCTYPE html>
 <script src="js/jquery.min.js"></script>
 <html lang="en">
@@ -121,96 +141,27 @@
                 </div>
               </div>
               <div class="row">
+                <?
+                for($i=1;$i<=$count;$i++) {
+                ?>
                 <div class="col l4 s6">
                   <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/1-1.jpg" alt="Doritaenopsis Chain Xen Diamond Celebration">
+                      <img class="activator" src="<? echo $dat[$i][7]; ?>" alt="Doritaenopsis Chain Xen Diamond Celebration">
                     </div>
                     <div class="card-content">
-                      <p><i>Doritaenopsis Chain Xen Diamond Celebration</i></p>
+                      <p><i><? echo $dat[$i][1]; ?></i></p>
                     </div>
                     <div class="card-reveal">
                       <span class="card-title grey-text text-darken-4">Detail<i class="material-icons right">close</i></span>
-                      <p class="truncate">These seedlings are some of the newest "Harlequin" type seedlings. Dtps. Chain Xen Diamond 'Celebration' received an FCC from the American Orchid Society and had well shaped flowers with a pink background overlaid with blotches of dark red.</p>
-                      <br /><a href="#modal1-1" class="blue-text">MORE</a>
+                      <p class="truncate"><? echo $dat[$i][2]; ?></p>
+                      <br /><a href="#modal<? echo $dat[$i][0]; ?>" class="blue-text">MORE</a>
                     </div>
                   </div>
                 </div>
-                <div class="col l4 s6">
-                  <div class="card small">
-                    <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/1-2.jpg" alt="Cattleya labiata">
-                    </div>
-                    <div class="card-content">
-                      <p><i>Cattleya labiata</i></p>
-                    </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                      <br /><a href="#modal1-2" class="blue-text">MORE</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col l4 s6">
-                  <div class="card small">
-                    <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/1-3.jpg" alt="Cattleya Arctic Star 'Snow Queen'">
-                    </div>
-                    <div class="card-content">
-                      <p><i>Cattleya Arctic Star 'Snow Queen'</i></p>
-                    </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                      <br /><a href="#modal1-3" class="blue-text">MORE</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col l4 s6">
-                  <div class="card small">
-                    <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/2-1.jpg" alt="Phalanenopsis lindenii">
-                    </div>
-                    <div class="card-content">
-                      <p><i>Phalanenopsis lindenii</i></p>
-                    </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                      <br /><a href="#modal2-1" class="blue-text">MORE</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col l4 s6">
-                  <div class="card small">
-                    <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/2-2.jpg" alt="Oncidium Sweet Sugar">
-                    </div>
-                    <div class="card-content">
-                      <p><i>Oncidium Sweet Sugar</i></p>
-                    </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                      <br /><a href="#modal2-2" class="blue-text">MORE</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col l4 s6">
-                  <div class="card small">
-                    <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="img/data/2-3.jpg" alt="Epidendrum Stamfordianum">
-                    </div>
-                    <div class="card-content">
-                      <p><i>Epidendrum Stamfordianum</i></p>
-                    </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                      <br /><a href="#modal2-3" class="blue-text">MORE</a>
-                    </div>
-                  </div>
-                </div>
+                <?
+                }
+                ?>
               </div>
             </div>
             <div id="scanpc">
@@ -234,22 +185,26 @@
       </div>
   </div>
   </div>
-  <div id="modal1-1" class="modal bottom-sheet">
+
+
+  <?
+  for($i=1;$i<=$count;$i++) {
+  ?>
+  <div id="modal<? echo $dat[$i][0]; ?>" class="modal">
     <div class="modal-content">
       <div class="row">
-        <h4>Doritaenopsis Chain Xen Diamond Celebration</h4>
+        <h4><? echo $dat[$i][1]; ?></h4>
       </div>
       <div class="row">
         <div class="container">
           <div class="col l4 s12">
-              <center><img src="img/modal/1-1.jpg" class="responsive-img" /></center>
+              <center><img src="<? echo $dat[$i][7]; ?>" class="responsive-img" /></center>
               <blockquote>
-                These seedlings are some of the newest "Harlequin" type seedlings. Dtps. Chain Xen Diamond 'Celebration' received an FCC from the American Orchid Society and had well shaped flowers with a pink background overlaid with blotches of dark red.
-              </blockquote>
+                <? echo $dat[$i][3]; ?>
           </div>
           <div class="col l8 s12">
           <div class="row">
-            <b>BLOOMING SEASON:</b> Summer<br /><br />
+            <b>BLOOMING SEASON:</b> <? echo $dat[$i][4]; ?><br /><br />
             <b>HOW TO TAKE CARE IT:</b>
             <ul>
               <li>Step 1</li>
@@ -260,11 +215,11 @@
           </div>
           <div class="row">
             <div class="col s3 l2">
-              <b>RANKING:</b>
+              <b>WATER:</b>
             </div>
             <div class="col s9 l10">
               <div class="progress" style="height: 20px;">
-                <div class="determinate green" style="width: 80%;"></div>
+                <div class="determinate green" style="width: <? echo $dat[$i][5]; ?>%;"></div>
               </div>
             </div>
           </div>
@@ -274,7 +229,7 @@
             </div>
             <div class="col s9 l10">
               <div class="progress" style="height: 20px;">
-                <div class="determinate yellow" style="width: 45%;"></div>
+                <div class="determinate yellow" style="width: <? echo $dat[$i][6]; ?>%;"></div>
               </div>
             </div>
           </div>
@@ -285,51 +240,9 @@
       <a href="#scanh" class="modal-action modal-close waves-effect waves-light btn-flat">Done</a>
     </div>
   </div>
-  <div id="modal1-2" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Cattleya labiata</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#scanh" class="modal-action modal-close waves-effect waves-light btn-flat">Done</a>
-    </div>
-  </div>
-  <div id="modal1-3" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Cattleya Arctic Star 'Snow Queen'</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#scanh" class="modal-action modal-close waves-effect waves-light btn-flat">Done</a>
-    </div>
-  </div>
-  <div id="modal2-1" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Phalanenopsis lindenii</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#scanh" class="modal-action modal-close waves-effect waves-light btn-flat">Done</a>
-    </div>
-  </div>
-  <div id="modal2-2" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Oncidium Sweet Sugar</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#scanh" class="modal-action modal-close waves-effect waves-light btn-flat">Done</a>
-    </div>
-  </div>
-  <div id="modal2-3" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Epidendrum Stamfordianum</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#scanh" class="modal-action modal-close waves-effect waves-light btn-flat">Done</a>
-    </div>
-  </div>
+  <?
+  }
+  ?>
 
   <script src="js/materialize.js"></script>
   <? //<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script> ?>
@@ -356,22 +269,13 @@
     });
     $('input.autocomplete').autocomplete({
       data: {
-        "Doritaenopsis Chain Xen Diamond Celebration": null,
-        "Cattleya labiata": null,
-        "Cattleya Arctic Star 'Snow Queen'": null,
-        "Dendrobium  secundum": null,
-        "Ascocentrum curvifolium": null,
-        "Ascocentrum miniatum": null,
-        "Rhynchostylis gigantea":null,
-        "Rhynchostylis retusa": null,
-        "Aerides falcata Lindl.": null,
-        "Aerides multiflora Roxb.": null,
-        "Phalaenopsis cornucervi (Breda) Bl. & Rchb. f.": null,
-        "Bulbophyllum cirrhopetalum picturatum Lodd. ex Lindl.": null,
-        "Bulbophyllum patens King ex. Hook. f.": null,
-        "Bulbophyllum smitinandii": null,
-        "Paphiopedilum niveum": null,
-        "Vanda insignis": null
+        <?
+        for($i=1;$i<=$count;$i++) {
+        ?>
+        "<? echo $dat[$i][1]; ?>": null<? if($i!=$count){ echo ","; } ?>
+        <?
+        }
+        ?>
       },
       limit: 3, // The max amount of results that can be shown at once. Default: Infinity.
       onAutocomplete: function(val) {
