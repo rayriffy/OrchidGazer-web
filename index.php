@@ -272,7 +272,7 @@
         <?
         for($i=1;$i<=$count;$i++) {
         ?>
-        "<? echo $dat[$i][1]; ?>": null<? if($i!=$count){ echo ","; } ?>
+        "<? echo $dat[$i][1]; ?>": "modal<? echo $dat[$i][0]; ?>"<? if($i!=$count){ echo ","; } ?>
         <?
         }
         ?>
