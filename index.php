@@ -38,7 +38,7 @@
   <meta property="og:image" content="https://testtube.rayriffy.com/torkla_wip/img/OrchidGaz_LO_RESIZE.png" />
   <title>OrchidGazer</title>
   <script src="js/companion.js" data-service-worker="sw.js"></script>
-  <link rel="icon" type="image/png" href="img/ico.png">
+  <link rel="icon" type="image/png" href="https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/loader.gif?alt=media&token=38d930b5-4f43-4525-b2c7-520363f5e536">
   <link rel="manifest" href="manifest.json">
   <style>
     body {
@@ -73,7 +73,7 @@
     	position:absolute;
     	left:50%;
     	top:50%;
-    	background-image:url(img/loader.gif);
+    	background-image:url(https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/loader.gif?alt=media&token=38d930b5-4f43-4525-b2c7-520363f5e536);
     	background-repeat:no-repeat;
     	background-position:center;
     	margin:-100px 0 0 -100px;
@@ -107,7 +107,7 @@
         <div class="row">
           <div class="card">
             <div class="card-image">
-              <img src="img/card_img.jpg" alt="splash">
+              <img src="https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/card_img.jpg?alt=media&token=9ec508da-5b45-4ecf-8b4d-9632ed2594e1" alt="splash">
               <span class="card-title">OrchidGazer</span>
             </div>
             <div class="card-content">
