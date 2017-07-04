@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+.riffyfullH {
+  height: 100vh !important;
+}
+.tabs .indicator {
+  background-color: #2196f3;
+}

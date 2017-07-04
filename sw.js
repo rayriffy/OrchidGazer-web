@@ -2,8 +2,7 @@ importScripts('js/sw-toolbox.js');
 
 toolbox.precache([
   'offline.html', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css', 'js/sw-toolbox.js', 'js/materialize.js','js/jquery.min.js','https://fonts.googleapis.com/icon?family=Material+Icons',
-  'https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/loader.gif?alt=media&token=38d930b5-4f43-4525-b2c7-520363f5e536','https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/loader.gif?alt=media&token=38d930b5-4f43-4525-b2c7-520363f5e536','manifest.json',
-  'https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/card_img.jpg?alt=media&token=9ec508da-5b45-4ecf-8b4d-9632ed2594e1'
+  'img/loader.gif','img/card_img.jpg'
 ])
 
 toolbox.options.debug = false;

@@ -27,7 +27,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" lazyload="1">
   <meta name="theme-color" content="#0d47a1">
   <meta name="msapplication-navbutton-color" content="#0d47a1">
   <meta name="apple-mobile-web-app-status-bar-style" content="#0d47a1">
@@ -35,50 +35,13 @@
   <meta property="og:title" content="OrchidGazer" />
   <meta property="og:site_name" content="OrchidGazer"/>
   <meta property="og:description" content="An innovation for orchid lovers" />
-  <meta property="og:image" content="https://testtube.rayriffy.com/torkla_wip/img/OrchidGaz_LO_RESIZE.png" />
+  <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/OrchidGaz_LO_RESIZE.png?alt=media&token=60136e28-3034-4cc3-b652-e03e9fadbd5e" />
   <title>OrchidGazer</title>
   <script src="js/companion.js" data-service-worker="sw.js"></script>
-  <link rel="icon" type="image/png" href="https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/loader.gif?alt=media&token=38d930b5-4f43-4525-b2c7-520363f5e536">
+  <link rel="stylesheet" href="css/critical.css" lazyload="1">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/png" href="img/ico.png">
   <link rel="manifest" href="manifest.json">
-  <style>
-    body {
-      display: flex;
-      min-height: 100vh;
-      flex-direction: column;
-    }
-    main {
-      flex: 1 0 auto;
-    }
-    .riffyfullH {
-      height: 100vh !important;
-    }
-  </style>
-  <style>
-    body {
-    	overflow: hidden;
-    }
-    #preloader {
-    	position: fixed;
-    	top:0;
-    	left:0;
-    	right:0;
-    	bottom:0;
-    	background-color:#ffffff;
-    	z-index:99;
-    }
-
-    #status {
-    	width:200px;
-    	height:200px;
-    	position:absolute;
-    	left:50%;
-    	top:50%;
-    	background-image:url(https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/loader.gif?alt=media&token=38d930b5-4f43-4525-b2c7-520363f5e536);
-    	background-repeat:no-repeat;
-    	background-position:center;
-    	margin:-100px 0 0 -100px;
-    }
-  </style>
 </head>
 
 <div id="preloader">
@@ -93,6 +56,13 @@
 </script>
 
 <body>
+  <!-- FIREBASE OPERATION -->
+  <script>
+    //var database = firebase.database();
+  </script>
+  <noscript>
+    ERROR: JavaScript disabled! For full functionality of this site it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.
+  </noscript>
   <ul id="more_pg_pc" class="dropdown-content">
     <li><a class="blue-text" href="#!">one</a></li>
     <li><a class="blue-text" href="#!">two</a></li>
@@ -107,7 +77,7 @@
         <div class="row">
           <div class="card">
             <div class="card-image">
-              <img src="https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/card_img.jpg?alt=media&token=9ec508da-5b45-4ecf-8b4d-9632ed2594e1" alt="splash">
+              <img src="img/card_img.jpg" alt="splash">
               <span class="card-title">OrchidGazer</span>
             </div>
             <div class="card-content">
@@ -127,8 +97,8 @@
           </div>
           <div class="card-tabs">
             <ul class="tabs tabs-fixed-width">
-              <li class="tab"><a class="active" href="#gallerypc">GALLERY</a></li>
-              <li class="tab"><a href="#scanpc">SCAN</a></li>
+              <li class="tab"><a class="active blue-text" href="#gallerypc">GALLERY</a></li>
+              <li class="tab"><a class="blue-text" href="#scanpc">SCAN</a></li>
             </ul>
           </div>
           <div class="card-content">
@@ -285,4 +255,19 @@
     });
 
   });
+</script>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCaboaV5F421YAeNl3dN4WFB60tOXJIJG4",
+    authDomain: "riffyorchid.firebaseapp.com",
+    databaseURL: "https://riffyorchid.firebaseio.com",
+    projectId: "riffyorchid",
+    storageBucket: "riffyorchid.appspot.com",
+    messagingSenderId: "384484096577"
+  };
+  firebase.initializeApp(config);
 </script>
