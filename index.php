@@ -37,6 +37,7 @@
   <meta property="og:description" content="An innovation for orchid lovers" />
   <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/riffyorchid.appspot.com/o/OrchidGaz_LO_RESIZE.png?alt=media&token=60136e28-3034-4cc3-b652-e03e9fadbd5e" />
   <title>OrchidGazer</title>
+  <link rel="apple-touch-icon-precomposed" href="/img/ico.png" />
   <script src="js/companion.js" data-service-worker="sw.js"></script>
   <link rel="stylesheet" href="css/critical.css" lazyload="1">
   <link rel="stylesheet" href="css/main.css">
