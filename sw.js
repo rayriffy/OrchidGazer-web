@@ -1,8 +1,8 @@
 importScripts('js/sw-toolbox.js');
 
 toolbox.precache([
-  'offline.html', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css', 'js/sw-toolbox.js', 'js/materialize.js','js/jquery.min.js','https://fonts.googleapis.com/icon?family=Material+Icons',
-  'img/loader.gif','img/card_img.jpg'
+  '/offline.html', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css', '/js/sw-toolbox.js', '/js/materialize.js','/js/jquery.min.js','https://fonts.googleapis.com/icon?family=Material+Icons',
+  '/img/loader.gif','/img/card_img.jpg'
 ])
 
 toolbox.options.debug = false;

@@ -1,21 +1,41 @@
 <?
+  if(!isset($_COOKIE['resultst']))
+  {
+    header('Location: /');
+  }
+  else {
+    setcookie("resultst", null, time() - (86400 * 30), "/");
+  }
+?>
+<?
   include ('sql.php');
   sql_connect();
   mysql_select_db('orchid') or die('ERR: DB not found');
-  $sql="SELECT * FROM `dat` WHERE 1";
-  $query=mysql_query($sql);
-  $count=0;
-  while($row=mysql_fetch_array($query))
+  for($i=0;$i<5;$i++)
   {
-    $count++;
-    $dat[$count][0]=$row[0];
-    $dat[$count][1]=$row[1];
-    $dat[$count][2]=$row[2];
-    $dat[$count][3]=$row[3];
-    $dat[$count][4]=$row[4];
-    $dat[$count][5]=$row[5];
-    $dat[$count][6]=$row[6];
-    $dat[$count][7]=$row[7];
+    $result_id[$i]=$_COOKIE['label'.$i];
+    $acc[$i]=$_COOKIE['result'.$i];
+  }
+  //print_r($random_qty_num);
+  $count=0;
+  for($k=0;$k<5;$k++)
+  {
+    $sql="SELECT * FROM `dat` WHERE `id` = ".$result_id[$k];
+    $query=mysql_query($sql);
+    while($row=mysql_fetch_array($query))
+    {
+      $count++;
+      $dat[$count][0]=$row[0];
+      $dat[$count][1]=$row[1];
+      $dat[$count][2]=$row[2];
+      $dat[$count][3]=$row[3];
+      $dat[$count][4]=$row[4];
+      $dat[$count][5]=$row[5];
+      $dat[$count][6]=$row[6];
+      $dat[$count][7]=$row[7];
+    }
+    $sql=null;
+    $query=null;
   }
   mysql_close();
 ?>
@@ -84,7 +104,7 @@
     {
   ?>
   <div class="col s12 chip red white-text">
-    <center>ERROR: Invaild file! (Only .jpg, .png, .jpeg can be allowed)
+    <center>ERROR: Invaild file!
     <i class="close material-icons">close</i></center>
   </div>
   <?
@@ -94,24 +114,6 @@
   ?>
   <div class="col s12 chip green white-text">
     <center>Success ;)
-    <i class="close material-icons">close</i></center>
-  </div>
-  <?
-    }
-    else if($_COOKIE['uploadst']==701)
-    {
-  ?>
-  <div class="col s12 chip red white-text">
-    <center>ERROR: This is not an image
-    <i class="close material-icons">close</i></center>
-  </div>
-  <?
-    }
-    else if($_COOKIE['uploadst']==702)
-    {
-  ?>
-  <div class="col s12 chip red white-text">
-    <center>ERROR: Your file is too large
     <i class="close material-icons">close</i></center>
   </div>
   <?
@@ -145,69 +147,66 @@
       <div class="col l8 s12">
         <div class="card" id="scanh">
           <div class="card-content">
-            <span class="card-title">Database</span>
-          </div>
-          <div class="card-tabs">
-            <ul class="tabs tabs-fixed-width">
-              <li class="tab"><a class="active blue-text" href="#gallerypc">GALLERY</a></li>
-              <li class="tab"><a class="blue-text" href="#scanpc">SCAN</a></li>
-            </ul>
+            <span class="card-title">Result</span>
           </div>
           <div class="card-content">
-            <div id="gallerypc">
-              <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">search</i>
-                  <input type="text" id="autocomplete-input" class="autocomplete">
-                  <label for="autocomplete-input">Search</label>
-                </div>
-              </div>
-              <div class="row">
-                <?
-                for($i=1;$i<=$count;$i++) {
-                ?>
-                <div class="col l4 s6">
-                  <div class="card small">
-                    <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="<? echo $dat[$i][7]; ?>" alt="<? echo $dat[$i][7]; ?>">
-                    </div>
-                    <div class="card-content">
-                      <p><i><? echo $dat[$i][1]; ?></i></p>
-                    </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Detail<i class="material-icons right">close</i></span>
-                      <p class="truncate"><? echo $dat[$i][2]; ?></p>
-                      <br /><a href="#modal<? echo $dat[$i][0]; ?>" class="blue-text">MORE</a>
-                    </div>
+            <div class="row">
+              <?
+              for($i=1;$i<=1;$i++) {
+              ?>
+              <div class="col l4 s6 offset-l4 offset-s3">
+                <div class="card small">
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="<? echo $dat[$i][7]; ?>" alt="<? echo $dat[$i][7]; ?>">
+                  </div>
+                  <div class="card-content">
+                    <p><i><? echo $dat[$i][1]; ?></i><br />Score: <? echo $acc[$i]; ?></p>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Detail<i class="material-icons right">close</i></span>
+                    <p class="truncate"><? echo $dat[$i][2]; ?></p>
+                    <br /><a href="#modal<? echo $dat[$i][0]; ?>" class="blue-text">MORE</a>
                   </div>
                 </div>
-                <?
-                }
-                ?>
               </div>
+              <?
+              }
+              ?>
             </div>
-            <div id="scanpc">
-	      <form action="upload.php" method="POST" enctype="multipart/form-data">
-              <span class="card-title">Upload File</span>
-              <div class="file-field input-field">
-                <div class="btn waves-effect waves-light blue darken-1">
-                <span>File</span>
-                <input type="file" name="fileUpload" id="fileUpload">
-                </div>
-                <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
+            <div class="row">
+              <div class="col l12 s12"><h5>Similar Results</h5></div>
+              <?
+              for($i=2;$i<=$count;$i++) {
+              ?>
+              <div class="col l4 s6">
+                <div class="card small">
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="<? echo $dat[$i][7]; ?>" alt="<? echo $dat[$i][7]; ?>">
+                  </div>
+                  <div class="card-content">
+                    <p><i><? echo $dat[$i][1]; ?></i><br />Score: <? echo $acc[$i]; ?></p>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Detail<i class="material-icons right">close</i></span>
+                    <p class="truncate"><? echo $dat[$i][2]; ?></p>
+                    <br /><a href="#modal<? echo $dat[$i][0]; ?>" class="blue-text">MORE</a>
+                  </div>
                 </div>
               </div>
-              <button class="btn waves-effect waves-light blue col s12" type="submit" value="Upload Image" name="submit">SEND</button>&nbsp;
+              <?
+              }
+              ?>
             </div>
-	    </form>
+            <div class="row">
+              <a href="/" class="col l6 s12 offset-l3 btn blue white-text waves-effect waves-light">BACK TO GALLERY</a>
+            </div>
           </div>
           <? /* <div class="card-action">
             <a href="#" class="blue-text">MORE</a>
           </div> */ ?>
         </div>
       </div>
-  </div>
+    </div>
   </div>
 
 
@@ -297,16 +296,15 @@
         <?
         for($i=1;$i<=$count;$i++) {
         ?>
-        "<? echo $dat[$i][1]; ?>": '#modal<? echo $dat[$i][0]; ?>'<? if($i!=$count){ echo ","; } ?>
+        "<? echo $dat[$i][1]; ?>": "modal<? echo $dat[$i][0]; ?>"<? if($i!=$count){ echo ","; } ?>
         <?
         }
         ?>
       },
-      limit: 3, // The max amount of results that can be shown at once. Default: Infinity.
+      limit: 3,
       onAutocomplete: function(val) {
-        // Callback function when value is autcompleted.
       },
-      minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+      minLength: 1,
     });
 
   });
