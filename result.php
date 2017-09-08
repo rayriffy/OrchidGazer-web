@@ -174,7 +174,7 @@
               ?>
             </div>
             <div class="row">
-              <div class="col l12 s12"><h5>Similar Results</h5></div>
+              <div class="col l12 s12"><h5>Not correct? Maybe some of these are your answer</h5></div>
               <?
               for($i=2;$i<=$count;$i++) {
               ?>
