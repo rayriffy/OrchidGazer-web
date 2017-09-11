@@ -21,5 +21,7 @@ First of all, you need to install TensorFlow on your server first.
  ## Troubleshooting
  
  ### I got a freaking `pip: command not found` error
- 
  Easy, just run `easy_install pip`
+
+### `ImportError: libcudnn.so.6: cannot open shared object file: No such file or directory`
+Damn Daniel! You install incorrect version of Nvidia CUDNN [Download a new one here](https://developer.nvidia.com/rdp/cudnn-download)
