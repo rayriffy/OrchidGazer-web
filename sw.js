@@ -1,35 +1,48 @@
-importScripts('js/sw-toolbox.js');
+var EXTRA_FILES = [];
 
-toolbox.precache([
-  '/offline.html', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css', '/js/sw-toolbox.js', '/js/materialize.js','/js/jquery.min.js','https://fonts.googleapis.com/icon?family=Material+Icons',
-  '/img/loader.gif','/img/card_img.jpg'
-])
+var CHECKSUM = "v15";
 
-toolbox.options.debug = false;
-toolbox.options.cache.name = "orchidgaz-v1";
+var FILES = [
+  '/offline.html',
+  'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css',
+  '/js/materialize.js',
+  '/js/jquery.min.js',
+  'https://fonts.googleapis.com/icon?family=Material+Icons',
+  '/img/loader.gif',
+  '/img/card_img.jpg',
+  '/img/ico.png',
+  'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Bold.woff2',
+  'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Bold.woff'
+].concat(EXTRA_FILES || []);
 
-self.addEventListener('install', function install() {
-  self.skipWaiting();
-})
-self.addEventListener('activate', function activate(e) {
-  e.waitUntil(self.clients.claim())
-})
+var CACHENAME = 'orchidgaz-' + CHECKSUM;
 
-toolbox.router.get("(.*)", function get(req, vals, opts) {
-  return toolbox.networkFirst(req, vals, opts)
-    .catch(function(error) {
-      console.log({req, vals, opts, error})
-      if (req.method === "GET" && req.headers.get("accept").includes("text/html")) {
-        return toolbox.cacheOnly(new Request("offline.html"), vals, opts)
+self.addEventListener('install', function(event) {
+  event.waitUntil(caches.open(CACHENAME).then(function(cache) {
+    return cache.addAll(FILES);
+  }));
+});
+
+self.addEventListener('activate', function(event) {
+  return event.waitUntil(caches.keys().then(function(keys) {
+    return Promise.all(keys.map(function(k) {
+      if (k != CACHENAME && k.indexOf('mindsharp-') == 0) {
+        return caches.delete(k);
+      } else {
+        return Promise.resolve();
       }
-      throw error
-    })
-})
+    }));
+  }));
+});
 
-toolbox.router.get("css/*.css", toolbox.fastest)
-toolbox.router.get("js/*.js", toolbox.fastest)
-toolbox.router.get("img/*.jpg", toolbox.fastest)
-toolbox.router.get("img/*.svg", toolbox.fastest)
-toolbox.router.get("img/*.gif", toolbox.fastest)
-toolbox.router.get("img/*.png", toolbox.fastest)
-toolbox.router.get("manifest.json", toolbox.networkFirst)
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response=>response||fetch(event.request))
+      .catch(() => {
+        if(event.request.mode == 'navigate') {
+          return caches.match('/offline.html');
+        }
+      })
+  );
+});
