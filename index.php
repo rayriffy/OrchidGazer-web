@@ -2,7 +2,7 @@
   include ('sql.php');
   sql_connect();
   mysql_select_db('orchid') or die('ERR: DB not found');
-  $sql="SELECT * FROM `dat` WHERE 1";
+  $sql="SELECT * FROM `dat` WHERE 1 ORDER BY `name`";
   $query=mysql_query($sql);
   $count=0;
   while($row=mysql_fetch_array($query))
