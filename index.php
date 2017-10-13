@@ -18,6 +18,25 @@
     $dat[$count][7]=$row[7];
   }
   mysql_close();
+  $page_num=(int)($count/6);
+  if(($count/6)-$page_num!=0)
+  {
+    $page_num++;
+  }
+  if(!isset($_REQUEST['p']))
+  {
+    $crr_page=1;
+  }
+  else
+  {
+    $crr_page=$_REQUEST['p'];
+  }
+  $bak_count=$count;
+  $count=$crr_page*6;
+  if($crr_page==$page_num)
+  {
+    $count=$bak_count;
+  }
 ?>
 <!DOCTYPE html>
 <script src="js/jquery.min.js"></script>
@@ -43,6 +62,11 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="icon" type="image/png" href="img/ico.png">
   <link rel="manifest" href="manifest.json">
+  <style>
+    .pagination li.active {
+      background-color: #039be5 !important;
+    }
+  </style>
 </head>
 
 <div id="preloader">
@@ -163,7 +187,7 @@
               </div>
               <div class="row">
                 <?
-                for($i=1;$i<=$count;$i++) {
+                for($i=$crr_page*6-5;$i<=$count;$i++) {
                 ?>
                 <div class="col l4 s6">
                   <div class="card small">
@@ -183,6 +207,57 @@
                 <?
                 }
                 ?>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <ul class="pagination center">
+                    <?
+                    if($crr_page-1<=0)
+                    {
+                    ?>
+                    <li class="disabled"><a href="#"><i class="material-icons">chevron_left</i></a></li>
+                    <?
+                    }
+                    else
+                    {
+                    ?>
+                    <li class="waves-effect"><a href="/?p=<? echo $crr_page-1; ?>"><i class="material-icons">chevron_left</i></a></li>
+                    <?
+                    }
+                    ?>
+                    <?
+                    for($j=1;$j<=$page_num;$j++)
+                    {
+                      if($j==$crr_page)
+                      {
+                    ?>
+                    <li class="active"><a href="#"><? echo $j; ?></a></li>
+                    <?
+                      }
+                      else
+                      {
+                    ?>
+                    <li class="waves-effect"><a href="/?p=<? echo $j; ?>"><? echo $j; ?></a></li>
+                    <?
+                      }
+                    }
+                    ?>
+                    <?
+                    if($crr_page+1>$page_num)
+                    {
+                    ?>
+                    <li class="disabled"><a href="#"><i class="material-icons">chevron_right</i></a></li>
+                    <?
+                    }
+                    else
+                    {
+                    ?>
+                    <li class="waves-effect"><a href="/?p=<? echo $crr_page+1; ?>"><i class="material-icons">chevron_right</i></a></li>
+                    <?
+                    }
+                    ?>
+                  </ul>
+                </div>
               </div>
             </div>
             <div id="scanpc">
@@ -267,7 +342,6 @@
   <?
   }
   ?>
-
   <script src="js/materialize.js"></script>
   <? //<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script> ?>
 </body>

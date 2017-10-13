@@ -12,3 +12,10 @@ main {
 .tabs .indicator {
   background-color: #2196f3;
 }
+.fixed-table-pagination li.active a {
+    background: #000;
+    color: #ee6e73;
+}
+.pagination li.active {
+  background-color: #039be5 !important;
+}
