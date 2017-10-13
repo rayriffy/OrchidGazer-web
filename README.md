@@ -2,7 +2,7 @@
 the new generation of the mobile web for orchid lovers
 
 ## Requirements
- - Ubuntu 16 or later
+ - ~~Ubuntu 16~~ CentOS 7 or later
  - PHP 5.6 (PHP 7.0 not compatible)
  - Python 2.7 (To make mobilenet work properly)
  - Must be served in HTTPS [Get SSL certificate from here](https://letsencrypt.org/)
