@@ -24,6 +24,8 @@ After that, edit your MySQL connection setting in `sql.php`
 
 This project is built by using newest technology from Google called `Progressive Web App`
 
+![PWA Logo](https://cdn-images-1.medium.com/max/1000/1*U01ubQ9TrE1Zow5pkGHTfw.png)
+
 Native app can do things like send push notifications, work offline, look and feel like a REAL native app, and can be added to the homescreen. Mobile Web Apps can accessed in a mobile browser, by comparison, historically haven’t done those things. Progressive Web App fix that with new Web APIs, new design concepts, and new buzzwords.
 
 In short, it can bring all that stuff to your web application and deliver all exact the same experience that native app did ...Hybrid App
