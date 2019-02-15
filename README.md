@@ -1,3 +1,7 @@
+# THIS REPOSITORY IS DEPRECATED
+
+Do not put this project to the peroduction server due to lots of security vulnerability!
+
 # OrchidGazer-web
 the new generation of the mobile web for orchid lovers
 
